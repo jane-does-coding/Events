@@ -23,7 +23,7 @@ const UserMenu = ({ currentUser }: { currentUser?: User | null }) => {
 		<div className="relative text-black">
 			<div className="flex flex-row items-center gap-3">
 				<div
-					className="p-4 transition flex flex-row  items-center gap-3 rounded-full cursor-pointer hover:bg-neutral-900/50 text-white"
+					className="p-4 transition flex flex-row  items-center gap-3 rounded-full cursor-pointer hover:bg-black/50 text-white bg-neutral-900"
 					onClick={toggleOpen}
 				>
 					<AiOutlineMenu size={28} />
@@ -31,7 +31,7 @@ const UserMenu = ({ currentUser }: { currentUser?: User | null }) => {
 			</div>
 
 			{isOpen && (
-				<div className="absolute shadow-lg rounded-xl border-[1.5px] border-neutral-900/50 border-t-neutral-900 w-[40vw] md:w-[20vw] bg-neutral-800 overflow-hidden right-0 top-14 text-sm">
+				<div className="absolute shadow-lg rounded-xl border-[1.5px] border-neutral-900/50 border-t-neutral-900 w-[40vw] md:w-[20vw] bg-neutral-900 overflow-hidden right-0 top-14 text-sm">
 					<div className="flex flex-col cursor-pointer">
 						{currentUser ? (
 							<>
