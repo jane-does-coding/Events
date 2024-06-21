@@ -10,25 +10,10 @@ datasource db {
 model User {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   name           String
-  username       String   
+  username       String
   email          String   @unique
   hashedPassword String
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
   favoriteIds    String[] @db.ObjectId
-  events         Event[]  @relation("UserEvents") // Update the relation name
-}
-
-model Event {
-  id             String         @id @default(auto()) @map("_id") @db.ObjectId
-  title          String
-  oneline        String
-  description    String
-  date           String
-  location       String
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
-  userId         String         @db.ObjectId  // Add this line
-  user           User           @relation("UserEvents", fields: [userId], references: [id]) // Add this line to create relation
-
 }
