@@ -3,8 +3,6 @@ import getCurrentUser from "./getCurrentUser";
 
 export default async function getEvents() {
 	try {
-		const currentUser = await getCurrentUser();
-
 		const events = await prisma.event.findMany();
 
 		return events;
