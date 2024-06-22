@@ -8,7 +8,6 @@ import LoginModal from "./components/Modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import { usePathname } from "next/navigation";
 import EventModal from "./components/Modals/EventModal";
-import Menu from "./components/Menu/Menu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,10 +42,7 @@ export default async function RootLayout({
 				<RegisterModal />
 				<LoginModal />
 				<EventModal />
-				{/* 				<Navbar currentUser={currentUser} />
-				 */}{" "}
-				<Menu />
-				{children}
+				<Navbar currentUser={currentUser} /> {children}
 			</body>
 		</html>
 	);
