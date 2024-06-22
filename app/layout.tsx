@@ -36,6 +36,14 @@ export default async function RootLayout({
 					href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Playwrite+SK:wght@100..400&display=swap"
 					rel="stylesheet"
 				/>
+				<link
+					href="https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&display=swap"
+					rel="stylesheet"
+				></link>
+				<link
+					href="https://fonts.googleapis.com/css2?family=Playwrite+PL:wght@100..400&display=swap"
+					rel="stylesheet"
+				></link>
 			</head>
 			<body className={`${inter.className} dark bg-neutral-950`}>
 				<ToasterProvider />

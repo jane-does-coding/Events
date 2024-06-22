@@ -45,7 +45,10 @@ export default function EventCard({ event: finalEvent }: any) {
 	const router = useRouter();
 
 	return (
-		<Card className="w-full" ref={cardRef}>
+		<Card
+			className="w-full bg-neutral-900/50 backdrop-blur-md shadow-lg"
+			ref={cardRef}
+		>
 			<motion.div
 				ref={headerRef}
 				initial="hidden"
@@ -68,7 +71,9 @@ export default function EventCard({ event: finalEvent }: any) {
 						custom={2}
 						variants={fadeInVariant}
 					>
-						<CardDescription>{event.oneline}</CardDescription>
+						<CardDescription className="text-neutral-200">
+							{event.oneline}
+						</CardDescription>
 					</motion.div>
 				</CardHeader>
 			</motion.div>
@@ -100,10 +105,15 @@ export default function EventCard({ event: finalEvent }: any) {
 						animate={footerInView ? "visible" : "hidden"}
 						custom={6}
 						variants={fadeInVariant}
-						className="flex gap-4 items-center"
+						className="flex gap-4 items-center w-full"
 					>
-						<Button variant="outline">Share</Button>
-						<Button onClick={() => router.push(`/events/${event.id}`)}>
+						<Button variant="outline" className="w-full">
+							Share
+						</Button>
+						<Button
+							className="w-full bg-indigo-200/[15%] border-2 border-indigo-300 text-white hover:bg-neutral-900/25"
+							onClick={() => router.push(`/events/${event.id}`)}
+						>
 							View
 						</Button>
 					</motion.div>
