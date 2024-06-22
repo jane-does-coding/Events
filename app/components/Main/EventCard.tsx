@@ -195,7 +195,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
 						</button>
 						<div
 							className="bg-transparent"
-							ref={(node) => qrCodeInstance.append(node)}
+							ref={(node) => node && qrCodeInstance?.append(node)}
 						/>
 					</div>
 				</div>
