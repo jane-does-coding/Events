@@ -23,6 +23,9 @@ const EventModal = () => {
 			oneline: "",
 			description: "",
 			date: "",
+			location: "", // New field
+			contactEmail: "", // New field
+			contactPhone: "", // New field
 		},
 	});
 
@@ -75,6 +78,32 @@ const EventModal = () => {
 				id="date"
 				label="Event Date"
 				type="date"
+				disabled={isLoading}
+				errors={errors}
+				required
+				register={register}
+			/>
+			<Input
+				id="location"
+				label="Location"
+				disabled={isLoading}
+				errors={errors}
+				required
+				register={register}
+			/>
+			<Input
+				id="contactEmail"
+				label="Contact Email"
+				type="email"
+				disabled={isLoading}
+				errors={errors}
+				required
+				register={register}
+			/>
+			<Input
+				id="contactPhone"
+				label="Contact Phone"
+				type="tel"
 				disabled={isLoading}
 				errors={errors}
 				required

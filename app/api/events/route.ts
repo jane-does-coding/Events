@@ -7,7 +7,15 @@ const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
 	const body = await req.json();
-	const { title, description, oneline, date } = body;
+	const {
+		title,
+		description,
+		oneline,
+		date,
+		location,
+		contactEmail,
+		contactPhone,
+	} = body;
 
 	try {
 		// Check if the user exists
@@ -24,6 +32,9 @@ export async function POST(req: Request) {
 				description,
 				oneline,
 				date,
+				location, // New field
+				email: contactEmail, // New field
+				phone: contactPhone, // New field
 				userId: user.id,
 			},
 		});

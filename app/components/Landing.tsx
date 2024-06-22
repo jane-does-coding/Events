@@ -16,7 +16,7 @@ const Landing = ({ events }: any) => {
 				className="text-neutral-300 text-[2rem] jura text-center mx-auto w-fit my-0 random-font"
 			/>
 
-			<EventsGrid />
+			<EventsGrid events={events} />
 		</div>
 	);
 };
