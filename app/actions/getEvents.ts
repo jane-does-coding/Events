@@ -5,9 +5,7 @@ export default async function getEvents() {
 	try {
 		const currentUser = await getCurrentUser();
 
-		if (!currentUser) return [];
-
-		const events = await prisma.event.findMany({});
+		const events = await prisma.event.findMany();
 
 		return events;
 	} catch (error) {
