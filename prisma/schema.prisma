@@ -23,6 +23,7 @@ model User {
 model Event {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   title String
+  oneline String
   description String
   date String
   reatedAt      DateTime @default(now())

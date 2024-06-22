@@ -1,21 +1,15 @@
 "use client";
-import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useEventModal from "@/app/hooks/useEventModal";
 import axios from "axios";
 import { useState } from "react";
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
 import Modal from "./Modal";
-import Heading from "../Heading";
 import Input from "../Inputs/Input";
 import toast from "react-hot-toast";
-import useLoginModal from "@/app/hooks/useLoginModal";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import checkPassword from "@/app/actions/checkPassword";
-import useEventModal from "@/app/hooks/useEventModal";
 
 const EventModal = () => {
 	const eventModal = useEventModal();
-	const loginModal = useLoginModal();
 	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();
 
@@ -25,9 +19,10 @@ const EventModal = () => {
 		formState: { errors },
 	} = useForm<FieldValues>({
 		defaultValues: {
-			name: "",
-			email: "",
-			password: "",
+			title: "",
+			oneline: "",
+			description: "",
+			date: "",
 		},
 	});
 
@@ -35,80 +30,51 @@ const EventModal = () => {
 		setIsLoading(true);
 
 		try {
-			const isValidPassword = await checkPassword(data.password);
-
-			if (isValidPassword.error) {
-				toast.error(isValidPassword.error);
-				console.log(isValidPassword);
-				setIsLoading(false);
-				return;
-			}
-
-			await axios.post("/api/register", data);
+			await axios.post("/api/events/", data);
 
 			eventModal.onClose();
-
-			const callback = await signIn("credentials", {
-				...data,
-				redirect: false,
-			});
-
 			setIsLoading(false);
 
-			if (callback?.ok) {
-				toast.success("Logged in");
-				router.push("/");
-				router.refresh();
-				loginModal.onClose();
-			}
-
-			if (callback?.error) {
-				toast.error(callback.error);
-			}
+			toast.success("Event created successfully!");
+			router.push("/"); // Adjust the route to where you want to redirect after event creation
+			router.refresh();
 		} catch (err) {
 			console.log(err);
-			toast.error("Something went wrong");
+			toast.error("Failed to create event. Please try again.");
 			setIsLoading(false);
 		}
 	};
 
-	const switchModal = () => {
-		eventModal.onClose();
-		loginModal.onOpen();
-	};
-
 	const bodyContent = (
 		<div className="flex flex-col gap-3">
-			<div className="flex gap-3">
-				<Input
-					id="name"
-					label="Full Name"
-					disabled={isLoading}
-					errors={errors}
-					required
-					register={register}
-				/>
-				<Input
-					id="username"
-					label="Username"
-					disabled={isLoading}
-					errors={errors}
-					required
-					register={register}
-				/>
-			</div>
 			<Input
-				id="email"
-				label="Email"
+				id="title"
+				label="Event Title"
 				disabled={isLoading}
 				errors={errors}
 				required
 				register={register}
 			/>
 			<Input
-				id="password"
-				label="Password"
-				type="password"
+				id="oneline"
+				label="One Line"
+				disabled={isLoading}
+				errors={errors}
+				required
+				register={register}
+			/>
+			<Input
+				id="description"
+				label="Event Description"
+				disabled={isLoading}
+				errors={errors}
+				required
+				register={register}
+			/>
+			<Input
+				id="date"
+				label="Event Date"
+				type="date"
 				disabled={isLoading}
 				errors={errors}
 				required
@@ -119,14 +85,8 @@ const EventModal = () => {
 
 	const footerContent = (
 		<div className="flex flex-col text-center items-center justify-center py-1 pt-3 relative">
-			<p className="flex flex-row gap-2">
-				Already have an account?{" "}
-				<span
-					onClick={switchModal}
-					className="hover:cursor-pointer flex block transition hover:underline"
-				>
-					Login
-				</span>
+			<p className="text-gray-600">
+				Create your event by filling out the details above.
 			</p>
 		</div>
 	);
@@ -135,7 +95,7 @@ const EventModal = () => {
 		<Modal
 			disabled={isLoading}
 			isOpen={eventModal.isOpen}
-			title="Create Event "
+			title="Create Event"
 			actionLabel="Create"
 			onClose={eventModal.onClose}
 			onSubmit={handleSubmit(onSubmit)}
