@@ -7,10 +7,12 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import useEventModal from "@/app/hooks/useEventModal";
 
 const UserMenu = ({ currentUser }: { currentUser?: User | null }) => {
 	const registerModal = useRegisterModal();
 	const loginModal = useLoginModal();
+	const eventModal = useEventModal();
 	const router = useRouter();
 
 	const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +38,7 @@ const UserMenu = ({ currentUser }: { currentUser?: User | null }) => {
 						{currentUser ? (
 							<>
 								<MenuItem onClick={() => router.push("/")} label="Home" />
+								<MenuItem onClick={eventModal.onOpen} label="Create Event" />
 								<MenuItem onClick={() => signOut()} label="Logout" />
 							</>
 						) : (

@@ -7,6 +7,7 @@ import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/Modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import { usePathname } from "next/navigation";
+import EventModal from "./components/Modals/EventModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,6 +41,7 @@ export default async function RootLayout({
 				<ToasterProvider />
 				<RegisterModal />
 				<LoginModal />
+				<EventModal />
 				<Navbar currentUser={currentUser} />
 				{children}
 			</body>
