@@ -1,35 +1,42 @@
-# Auth Template
+# Events Website
 
-## Usage
+## Technologies used
+
+[![Technologies](https://skillicons.dev/icons?i=ts,tailwind,prisma,mongodb,nextjs,react,github,git)](https://skillicons.dev)
+
+## Demo
+
+[Events Site - Live Demo](/)
+
+## Run Locally
 
 Clone the project
 
+```bash
+  git clone https://github.com/jane-does-coding/cooking-website
 ```
-git clone https://github.com/YevheniiaSimaka/Nextjs-Auth-Template
+
+Go to the project directory
+
+```bash
+  cd my-project
 ```
 
 Install dependencies
 
-```
-npm i
-```
-
-Create .env
-
-```
-DATABASE_URL=
-NEXTAUTH_SECRET=
+```bash
+  npm i
 ```
 
-Set up prisma
+Add .env
 
-```
-npx prisma generate
-npx prisma db push
+```bash
+  DATABASE_URL=
+  NEXTAUTH_SECRET=
 ```
 
-Run it
+Start the server
 
-```
-npm run dev
+```bash
+  npm run dev
 ```
