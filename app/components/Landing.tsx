@@ -4,7 +4,6 @@ import AnimatedTextWord from "./Text/AnimatedTextWord";
 import EventsGrid from "./Main/EventsGrid";
 
 const Landing = ({ events }: any) => {
-	console.log(events);
 	return (
 		<div>
 			<AnimatedTextCharacter

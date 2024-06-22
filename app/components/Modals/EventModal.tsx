@@ -74,49 +74,45 @@ const EventModal = () => {
 				required
 				register={register}
 			/>
-			<Input
-				id="date"
-				label="Event Date"
-				type="date"
-				disabled={isLoading}
-				errors={errors}
-				required
-				register={register}
-			/>
-			<Input
-				id="location"
-				label="Location"
-				disabled={isLoading}
-				errors={errors}
-				required
-				register={register}
-			/>
-			<Input
-				id="contactEmail"
-				label="Contact Email"
-				type="email"
-				disabled={isLoading}
-				errors={errors}
-				required
-				register={register}
-			/>
-			<Input
-				id="contactPhone"
-				label="Contact Phone"
-				type="tel"
-				disabled={isLoading}
-				errors={errors}
-				required
-				register={register}
-			/>
-		</div>
-	);
-
-	const footerContent = (
-		<div className="flex flex-col text-center items-center justify-center py-1 pt-3 relative">
-			<p className="text-gray-600">
-				Create your event by filling out the details above.
-			</p>
+			<div className="flex gap-2">
+				<Input
+					id="date"
+					label="Event Date"
+					type="date"
+					disabled={isLoading}
+					errors={errors}
+					required
+					register={register}
+				/>
+				<Input
+					id="location"
+					label="Location"
+					disabled={isLoading}
+					errors={errors}
+					required
+					register={register}
+				/>
+			</div>
+			<div className="flex gap-2">
+				<Input
+					id="contactEmail"
+					label="Contact Email"
+					type="email"
+					disabled={isLoading}
+					errors={errors}
+					required
+					register={register}
+				/>
+				<Input
+					id="contactPhone"
+					label="Contact Phone"
+					type="tel"
+					disabled={isLoading}
+					errors={errors}
+					required
+					register={register}
+				/>
+			</div>
 		</div>
 	);
 
@@ -129,7 +125,6 @@ const EventModal = () => {
 			onClose={eventModal.onClose}
 			onSubmit={handleSubmit(onSubmit)}
 			body={bodyContent}
-			footer={footerContent}
 		/>
 	);
 };
